@@ -23,7 +23,7 @@ class FishSpeech_INFER_SRT:
     def INPUT_TYPES(s):
         return {"required":{
             "text":("SRT",),
-            "prompt_audio": ("AUDIO",),
+            "prompt_audio": ("AUDIOPATH",),
             "prompt_text":("SRT",),
             "if_mutiple_speaker":("BOOLEAN",{
                 "default": False
@@ -71,7 +71,7 @@ class FishSpeech_INFER_SRT:
         }}
     
     CATEGORY = "AIFSH_FishSpeech"
-    RETURN_TYPES = ('AUDIO',)
+    RETURN_TYPES = ('AUDIOPATH',)
     OUTPUT_NODE = False
 
     FUNCTION = "get_tts_wav"
@@ -216,7 +216,7 @@ class FishSpeech_INFER:
     @classmethod
     def INPUT_TYPES(s):
         return {"required":{
-            "prompt_audio": ("AUDIO",),
+            "prompt_audio": ("AUDIOPATH",),
             "text":("STRING",{
                 "multiline": True,
                 "default": "你好啊，世界！"
@@ -268,7 +268,7 @@ class FishSpeech_INFER:
         }}
     
     CATEGORY = "AIFSH_FishSpeech"
-    RETURN_TYPES = ('AUDIO',)
+    RETURN_TYPES = ('AUDIOPATH',)
     OUTPUT_NODE = False
 
     FUNCTION = "get_tts_wav"
@@ -329,7 +329,7 @@ class PreViewAudio:
     @classmethod
     def INPUT_TYPES(s):
         return {"required":
-                    {"audio": ("AUDIO",),}
+                    {"audio": ("AUDIOPATH",),}
                 }
 
     CATEGORY = "AIFSH_FishSpeech"
@@ -347,7 +347,7 @@ class PreViewAudio:
         audio_root = os.path.basename(tmp_path)
         return {"ui": {"audio":[audio_name,audio_root]}}
 
-class LoadAudio:
+class LoadAudioPath:
     @classmethod
     def INPUT_TYPES(s):
         files = [f for f in os.listdir(input_path) if os.path.isfile(os.path.join(input_path, f)) and f.split('.')[-1] in ["wav", "mp3","WAV","flac","m4a"]]
@@ -357,7 +357,7 @@ class LoadAudio:
 
     CATEGORY = "AIFSH_FishSpeech"
 
-    RETURN_TYPES = ("AUDIO",)
+    RETURN_TYPES = ("AUDIOPATH",)
     FUNCTION = "load_audio"
 
     def load_audio(self, audio):

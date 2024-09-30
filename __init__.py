@@ -24,10 +24,10 @@ if os.path.isfile("%s/fish_speech.pth" % (site_packages_root)):
 
 
 WEB_DIRECTORY = "./web"
-from .nodes import LoadAudio,PreViewAudio,LoadSRT,FishSpeech_INFER,FishSpeech_INFER_SRT
+from .nodes import LoadAudioPath,PreViewAudio,LoadSRT,FishSpeech_INFER,FishSpeech_INFER_SRT
 
 NODE_CLASS_MAPPINGS = {
-    "LoadAudio": LoadAudio,
+    "LoadAudioPath": LoadAudioPath,
     "PreViewAudio": PreViewAudio,
     "LoadSRT": LoadSRT,
     "FishSpeech_INFER": FishSpeech_INFER,
@@ -36,7 +36,7 @@ NODE_CLASS_MAPPINGS = {
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "LoadAudio": "AudioLoader",
+    "LoadAudioPath": "LoadAudioPath",
     "PreViewAudio": "PreView Audio",
     "LoadSRT": "SRT FILE Loader",
     "FishSpeech_INFER": "FishSpeech Inference",
